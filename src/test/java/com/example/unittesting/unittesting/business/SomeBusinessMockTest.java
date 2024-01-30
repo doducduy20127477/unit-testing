@@ -4,20 +4,23 @@ import com.example.unittesting.unittesting.data.SomeDataService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 public class SomeBusinessMockTest {
-    SomeBusinessImpl business = new SomeBusinessImpl();
-    SomeDataService someDataServiceMock = mock(SomeDataService.class);
+    @InjectMocks
+    SomeBusinessImpl business;
 
-    @BeforeEach
-    public void before() {
-        business.setSomeDataService(someDataServiceMock);
+    @Mock
+    SomeDataService someDataServiceMock;
 
-    }
     @Test
     void calculateSumUsingDataService_basic() {
 
