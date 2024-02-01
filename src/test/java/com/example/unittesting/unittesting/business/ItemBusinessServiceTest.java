@@ -23,12 +23,12 @@ public class ItemBusinessServiceTest {
     ItemRepository itemRepository;
 
     @Test
-    void calculateSumUsingDataService_basic() {
+    void retrieveAllItems_basic() {
 
         when(itemRepository.findAll()).thenReturn(
                 Arrays.asList(
-                        new Item(2, "Item2", 10, 10),
-                        new Item(3, "Item3", 20, 20)
+                    new Item(2, "Item2", 10, 10),
+                    new Item(3, "Item3", 20, 20)
                 )
         );
         List<Item> items = itemBusinessService.retrieveAllItems();
